@@ -1,0 +1,29 @@
+<h1>My tasks</h1>
+
+<% @tasks.each do |task| %>
+
+<ul>
+  <div class="custom-control custom-checkbox">
+    <input
+      type="checkbox"
+      class="custom-control-input"
+      id=<%= task.completed ? "defaultChecked2 checked" : "defaultUnchecked" %>
+    >
+    <label
+      class="custom-control-label"
+      for=<%= task.completed ? "defaultChecked2 checked" : "defaultUnchecked" %>>
+      <%= link_to task.title, task_path(task.id) %>
+      <%= " - " %>
+      <%= link_to(task_path(task.id), method: :delete, data: { confirm: "Are you sure?" }) do %>
+          <i style="margin-right: 0.5em; color: rgb(0,0,0);" class='far fa-trash-alt'></i>
+        <% end %>
+    </label>
+  </div>
+</ul>
+
+<% end %>
+
+<p></p>
+<button type="button" class="btn btn-dark"><%= link_to "Create a new task", new_task_path %></button>
+
+

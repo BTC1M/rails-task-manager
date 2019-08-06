@@ -1,0 +1,32 @@
+<h2><%= @task.title %></h2>
+<p><%= @task.details %></p>
+
+<% if @task.completed == true %>
+<% check = "defaultChecked2 checked" %>
+<% message = "This task is completed" %>
+<% else %>
+<% check = "defaultUnchecked" %>
+<% message = "This task is not completed yet" %>
+<% end %>
+
+<div class="custom-control custom-checkbox">
+    <input
+      type="checkbox"
+      class="custom-control-input"
+      id=<% check %>
+    >
+    <label
+      class="custom-control-label"
+      for=<% check %>
+    >
+      <%= message %>
+    </label>
+  </div>
+
+<p></p>
+<p></p>
+<button type="button" class="btn btn-dark"><%= link_to "Edit task", edit_task_path %></button>
+<p></p>
+<p></p>
+
+<%= link_to "Back to list", tasks_path %>
